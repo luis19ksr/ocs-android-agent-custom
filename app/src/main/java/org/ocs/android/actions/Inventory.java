@@ -21,6 +21,7 @@
 package org.ocs.android.actions;
 
 import android.content.Context;
+import android.provider.Settings.Global;
 import android.provider.Settings.Secure;
 import android.util.Log;
 
@@ -103,6 +104,10 @@ public class Inventory {
         hardware = new OCSHardware();
         String sid = Secure.getString(mCtx.getContentResolver(), Secure.ANDROID_ID);
         hardware.setName(hardware.getName() + "-" + sid);
+        String deviceName = Global.getString(mCtx.getContentResolver(), Global.DEVICE_NAME);
+        if (deviceName != null) {
+            hardware.setDescription(deviceName);
+        }
         ocslog.debug("OCSNetworks...");
         networks = new OCSNetworks(mCtx);
         if (!networks.getNetworks().isEmpty()) {

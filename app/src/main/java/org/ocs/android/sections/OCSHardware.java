@@ -163,6 +163,10 @@ public class OCSHardware implements OCSSectionInterface {
         this.name = name;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public void setChecksum(long checksum) {
         this.checksum = checksum;
     }
